@@ -28,7 +28,7 @@ if (contactForm) {
     const message = document.getElementById('message').value.trim();
 
     // Build a WhatsApp message
-    let text = `Hello Colsystems Tech,%0A%0A`;
+    let text = `Hello COLSYSTEM TECHNOLOGIES,%0A%0A`;
     text += `Name: ${name}%0A`;
     text += `Phone: ${phone}%0A`;
     if (service) text += `Service needed: ${service}%0A`;
@@ -65,3 +65,34 @@ window.addEventListener('scroll', () => {
     }
   });
 });
+
+// Cookie Consent
+(function () {
+  const banner = document.getElementById('cookie-consent');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const declineBtn = document.getElementById('cookie-decline');
+
+  if (!banner) return;
+
+  const consent = localStorage.getItem('cookieConsent');
+
+  if (!consent) {
+    // Show banner after a short delay
+    setTimeout(() => {
+      banner.classList.add('show');
+    }, 800);
+  }
+
+  function hideBanner(value) {
+    localStorage.setItem('cookieConsent', value);
+    banner.classList.remove('show');
+  }
+
+  if (acceptBtn) {
+    acceptBtn.addEventListener('click', () => hideBanner('accepted'));
+  }
+
+  if (declineBtn) {
+    declineBtn.addEventListener('click', () => hideBanner('declined'));
+  }
+})();
